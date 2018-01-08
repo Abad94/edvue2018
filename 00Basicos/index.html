@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Básicos en Vue.js</title>
+  <link rel="icon" href="https://vuejs.org/images/logo.png">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main id="app">
+    <h1>Básicos en Vue.js</h1>
+    <a href="../">regresar</a>
+    <form id="ContactForm" class="ContactForm">
+      <legend>¿Que deseas enviar?</legend>
+      <div align="center">
+        <input value="true" name="formType" type="radio" id="opinion">
+        <label for="opinion">Opinión</label>
+        <input value="false" name="formType" type="radio" id="budget">
+        <label for="budget">Presupuesto</label>
+      </div>
+      <legend>Formulario de <span>???</span></legend>
+      <input type="text" name="name" title="Tu nombre" placeholder="Escribe tu nombre" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required>
+      <input type="email" name="email" title="Tu email" placeholder="Escribe tu email" pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$"
+      required>
+      <input type="tel" name="phone" title="Tu teléfono" placeholder="Escribe tu teléfono" pattern="^[0-9]+$" required>
+      <select name="services" required>
+        <option>opciones</option>
+      </select>
+      <input type="text" name="subject" title="Asunto a tratar" placeholder="Asunto a tratar" required>
+      <textarea name="comments" title="Tus comentarios" placeholder="Escribe tus comentarios" cols="50" rows="5" required></textarea>
+      <input type="submit" value="enviar">
+    </form>
+  </main>
+</body>
+</html>
