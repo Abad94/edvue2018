@@ -139,5 +139,69 @@
       <pre>{{ propiedad ? true : false }}</pre>
     </code>
   </p>
+  <h2>2. Programación orientada a componentes</h2>
+  <ul>
+    <li>Introducción a los componentes</li>
+    <li>
+      <a href="https://vuejs.org/v2/guide/instance.html#Instance-Lifecycle-Hooks" target="_blank">Ciclo de vida de la instancia Vue</a>
+    </li>
+    <li>
+      <a href="./01Componentes/componentes.html">Componentes globales y locales</a>
+    </li>
+    <li>
+      <a href="./01Componentes/plantillas.html">Plantillas para componentes</a>
+    </li>
+    <li>
+      <a href="./01Componentes/propiedades.html">Propiedades</a>
+    </li>
+    <li>
+      <a href="./01Componentes/slots.html">Slots</a>
+    </li>
+    <li>
+      <a href="./01Componentes/eventos-personalizados.html">Eventos personalizados</a>
+    </li>
+    <li>
+      <a href="./01Componentes/event-bus.html">Comunicación entre componentes</a>
+    </li>
+  </ul>
+  <h3>¿Qué es un componente?</h3>
+  <p>
+    Los componentes son una de las características más potentes de Vue. Te ayudan a extender elementos HTML básicos para encapsular
+    código reutilizable.
+  </p>
+  <p>
+    En un nivel alto, los componentes son elementos personalizados a los que el compilador de Vue vincula el comportamiento.
+    En algunos casos, también pueden aparecer como un elemento HTML nativo extendido con el atributo especial
+    <b>is</b>.
+  </p>
+  <p>
+    Todos los componentes Vue también son instancias Vue, por lo que aceptan el mismo objeto de opciones y comparten los mismos
+    ganchos de ciclo de vida.
+  </p>
+  <p>
+    En los componentes el atributo
+    <b>data</b> NO será un objeto, sino un método para que pueda crear su propio ambito único, aislado e independiente del de
+    la instancia Vue.
+  </p>
+  <p>
+    Las
+    <b>propiedades</b> son el mecanismo para pasar información desde la instancia Vue y/o componente padre a un componente hijo
+    (
+    <a href="https://vuejs.org/v2/guide/components.html#One-Way-Data-Flow" target="_blank">One-way data flow</a>).
+  </p>
+  <p>
+    Los
+    <b>slots</b> permiten configurar y personalizar parte(s) del template visual de un componente.
+  </p>
+  <p>
+    Los
+    <b>eventos personalizados</b> son el mecanismo para pasar información desde un componente hijo hacia la instancia Vue y/o
+    componente padre.
+  </p>
+  <p>
+    Es posible comunicar dos o más componentes entre sí, sin recurrir a la instancia Vue de la aplicación, gracias a una nueva
+    instancia vacía de Vue llamada
+    <b>event bus</b>.
+  </p>
 </body>
 </html>
