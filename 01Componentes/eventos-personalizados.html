@@ -61,21 +61,24 @@
 </head>
 <body>
   <main id="app">
-    <div :class="[ isShowing ? blur : ' ' ]">
+    <div :class="[ isShowing ? blur : '' ]">
       <h1>Eventos Personalizados en componentes en Vue.js</h1>
       <a href="../">regresar</a>
       <br>
+      <br>
       <modal-btn @modal="toggleModal"></modal-btn>
     </div>
-        <transition name="fade">
-          <modal v-if="isShowing" class="modal">
-            <modal-btn @modal="toggleModal"></modal-btn>
-          </modal>
-        </transition>
+    <transition name="fade">
+      <modal v-if="isShowing" class="modal">
+        <modal-btn @modal="toggleModal"></modal-btn>
+      </modal>
+    </transition>
   </main>
   <template id="modal">
-    <h2>Soy un modal</h2>
-    <slot></slot>
+    <div>
+      <h2>Soy una ventana modal</h2>
+      <slot></slot>
+    </div>
   </template>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script>
@@ -87,7 +90,7 @@
       },
       methods: {
         toggleModal () {
-          this.isShowing = !this.isShowing
+          this.isShowing = !this.isShowing;
         }
       },
       components: {

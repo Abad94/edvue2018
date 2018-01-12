@@ -12,15 +12,19 @@
     <a href="../">regresar</a>
     <card></card>
     <card>
-      <template slot="position"><p>Profesor</p></template>
       <template slot="phrase"><p>Entrena tu mente y cuerpo de tal manera que cualquier día salgas, y corras una maratón</p></template>
       <template>
         <img src="https://ed.team/sites/default/files/styles/perfil_en_views_200x200_/public/pictures/2017-11/mircha.jpg?itok=HOaoIACB">
       </template>
-      <template slot="name">
-        <p>
-          Jonathan MirCha
-        </p>
+      <template slot="position"><p>Profesor</p></template>
+      <template slot="name"><h1>Jon</h1></template>
+    </card>
+    <card>
+      <template slot="position"><p><i>CEO</i></p></template>
+      <template slot="phrase"><p><b>El dinero no es el objetivo, sino la recompensa a un trabajo bien hecho</b></p></template>
+      <template slot="name"><h1>Álvaro</h1></template>
+      <template>
+        <img src="https://ed.team/sites/default/files/styles/perfil_en_views_200x200_/public/2017-11/alvaro.jpg?itok=PMBfUIfi">
       </template>
     </card>
     <cards :members="team">
@@ -31,6 +35,15 @@
         <h3 v-text="data.nombre"></h3>
       </template>
     </cards>
+    <cards :members="team">
+      <template scope="data">
+        <img :src="data.avatar" style="border-radius: 50%;">
+      </template>
+      <template slot="name" scope="data">
+        <h2 v-text="data.nombre"></h2>
+      </template>
+    </cards>
+    <pre>{{ $data }}</pre>
   </main>
   <template id="card">
     <figure>

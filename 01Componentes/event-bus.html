@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Comunicación entre componentes Vue.js</title>
   <link rel="icon" href="https://vuejs.org/images/logo.png">
 </head>
-
 <body>
   <h1>Comunicación entre componentes Vue.js</h1>
   <a href="../">regresar</a>
@@ -32,7 +30,7 @@
     Vue.component('todo-list', {
       props: ['todos'],
       template: '#todo-list',
-      created() {
+      created () {
         eventBus.$on('todo-add', todo => {
           this.todos.push(todo)
         })
@@ -70,5 +68,4 @@
     })
   </script>
 </body>
-
 </html>

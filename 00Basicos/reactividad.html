@@ -12,17 +12,18 @@
   <main id="app">
     <h2>{{ message }}</h2>
     <input type="text" v-model="message">
-    <pre>
-      {{ $data }}
-    </pre>
+    <pre>{{ $data }}</pre>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script>
-    //Vanilla JS
-    // const input = document.querySelector('input'),
-    //   h2 = document.querySelector('h2')
+    //Vanilla JavaScript
+    /*
+    const input = document.querySelector('input'),
+      h1 = document.querySelector('h1');
 
-    // input.addEventListener( 'keyup', () => h2.innerHTML = input.value )
+    input.addEventListener('keyup', () => h1.innerHTML = input.value)
+    */
+
     new Vue({
       el: '#app',
       data: {

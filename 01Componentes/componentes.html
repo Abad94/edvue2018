@@ -41,29 +41,29 @@
       }
     })
 
-      const StarWarsCharacters = {
-        template: `
-          <div>
-            <h2>Componente Local</h2>
-            <h3>Personajes StarWars</h3>
-            <ul>
-              <li v-for="character in characters">{{ character.name }}</li>
-            </ul>
-          </div>
-        `,
-        mounted() {
-          axios.get('https://swapi.co/api/people/')
-            .then(res => {
-              console.log(res)
-              this.characters = res.data.results
-            })
-        },
-        data() {
-          return {
-            characters: []
-          }
+    const StarWarsCharacters = {
+      template: `
+        <div>
+          <h2>Componente Local</h2>
+          <h3>Personajes StarWars</h3>
+          <ul>
+            <li v-for="character in characters">{{ character.name }}</li>
+          </ul>
+        </div>
+      `,
+      mounted() {
+        axios.get('https://swapi.co/api/people/')
+          .then(res => {
+            console.log(res)
+            this.characters = res.data.results
+          })
+      },
+      data() {
+        return {
+          characters: []
         }
       }
+    }
 
     const mv = new Vue({
       el: '#app',

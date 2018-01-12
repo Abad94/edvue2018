@@ -9,6 +9,6 @@ echo $form_data;
 
 if ( $formType ) {
   echo 'Opinión';
-} else{
+} else {
   echo 'Presupuesto';
 }
