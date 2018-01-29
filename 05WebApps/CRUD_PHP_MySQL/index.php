@@ -96,19 +96,19 @@
         <h3 class="left">Lista de estudiantes</h3>
       </div>
       <div class="col s2">
-        <button class="btn-large btn-floating">
+        <button class="btn-large btn-floating" @click="toggleModal('add')">
           <i class="material-icons">add_circle</i>
         </button>
       </div>
     </section>
     <hr>
     <transition name="fade">
-      <p class="u-flexColumnCenter red accent-1 red-text text-darken-4">
-        errorMessage
+      <p class="u-flexColumnCenter red accent-1 red-text text-darken-4" v-if="errorMessage">
+        {{ errorMessage }}
         <i class="material-icons prefix">error</i>
       </p>
-      <p class="u-flexColumnCenter green accent-1 green-text text-darken-4">
-        successMessage
+      <p class="u-flexColumnCenter green accent-1 green-text text-darken-4" v-if="successMessage">
+        {{ successMessage }}
         <i class="material-icons prefix">check_circle</i>
       </p>
     </transition>
@@ -122,7 +122,7 @@
           <th>Editar</th>
           <th>Borrar</th>
         </tr>
-        <tr>
+        <tr v-for="student in students" :key="student.id">
           <td>{{student.id}}</td>
           <td>{{student.name}}</td>
           <td>{{student.email}}</td>
@@ -142,7 +142,7 @@
       </table>
     </transition>
     <transition name="fade">
-      <section>
+      <section :class="[ 'ModalWindow', displayAddModal ]" v-if="showAddModal">
         <div class="ModalWindow-container">
           <header class="ModalWindow-heading">
             <div class="row valign-wrapper">
@@ -150,13 +150,13 @@
                 <h4 class="left">Agregar Estudiante</h4>
               </div>
               <div class="col s2">
-                <button class="btn btn-floating right">
+                <button class="btn btn-floating right" @click="toggleModal('add')">
                   <i class="material-icons">close</i>
                 </button>
               </div>
             </div>
           </header>
-          <form class="ModalWindow-content row">
+          <form class="ModalWindow-content row" @submit.prevent="createStudent">
             <div class="input-field col s12">
               <i class="material-icons prefix">account_circle</i>
               <input name="name" type="text" placeholder="Nombre" required>
@@ -182,7 +182,67 @@
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script>
-  
+    const app = new Vue({
+      el: "#app",
+      data: {
+        showAddModal: false,
+        showEditModal: false,
+        showDeleteModal: false,
+        errorMessage: '',
+        successMessage: '',
+        students: [],
+        activeStudent: {}
+      },
+      mounted () {
+        this.getAllStudents()
+      },
+      computed: {
+        displayAddModal () {
+          return ( this.showAddModal ) ? 'u-show' : ''
+        },
+        displayEditModal () {
+          return ( this.showEditModal ) ? 'u-show' : ''
+        },
+        displayDeleteModal() {
+          return ( this.showDeleteModal ) ? 'u-show' : ''
+        }
+      },
+      methods: {
+        toggleModal (modal) {
+          if ( modal === 'add' ) {
+            this.showAddModal = !this.showAddModal
+          } else if ( modal === 'edit' ) {
+            this.showEditModal = !this.showEditModal
+          } if ( modal === 'delete' ) {
+            this.showDeleteModal = !this.showDeleteModal
+          }
+        },
+        setMessages (res) {
+          if (res.data.error) {
+            this.errorMessage = res.data.message
+          } else {
+            this.successMessage = res.data.message
+            this.getAllStudents()
+          }
+
+          setTimeout(() => {
+            this.errorMessage = false
+            this.successMessage = false
+          }, 2000)
+        },
+        getAllStudents () {},
+        createStudent (e) {
+          axios.post( './api.php?action=create', new FormData( e.target ) )
+            .then( res => {
+              this.toggleModal('add')
+              this.setMessages(res)
+            } )
+        },
+        getStudent () {},
+        updateStudent () {},
+        deleteStudent () {}
+      }
+    })
   </script>
 </body>
 </html>
